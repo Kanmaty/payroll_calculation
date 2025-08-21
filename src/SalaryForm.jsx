@@ -19,15 +19,15 @@ function SalaryForm({ yearData, selectedMonth, formData, onMonthChange, onFormCh
       <div style={styles.formGrid}>
         <div>
           <h3>NKR</h3>
-          <div style={styles.inputGroup}><label style={styles.label}>給与</label><input style={styles.input} type="number" name="nkrSalary" value={formData.nkrSalary || ''} onChange={handleInputChange} /></div>
-          <div style={styles.inputGroup}><label style={styles.label}>出社回数</label><input style={styles.input} type="number" name="nkrOnSiteNum" value={formData.nkrOnSiteNum || ''} onChange={handleInputChange} /></div>
-          <div style={styles.inputGroup}><label style={styles.label}>勤務時間（h）</label><input style={styles.input} type="number" name="nkrTime" value={formData.nkrTime || ''} onChange={handleInputChange} /></div>
+          <div style={styles.inputGroup}><label style={styles.label}>給与</label><input style={styles.input} type="number" name="nkrSalary" value={formData.nkrSalary ?? ''} onChange={handleInputChange} /></div>
+          <div style={styles.inputGroup}><label style={styles.label}>出社回数</label><input style={styles.input} type="number" name="nkrOnSiteNum" value={formData.nkrOnSiteNum ?? ''} onChange={handleInputChange} /></div>
+          <div style={styles.inputGroup}><label style={styles.label}>勤務時間（h）</label><input style={styles.input} type="number" name="nkrTime" value={formData.nkrTime ?? ''} onChange={handleInputChange} /></div>
         </div>
         <div>
           <h3>OTY</h3>
-          <div style={styles.inputGroup}><label style={styles.label}>給与</label><input style={styles.input} type="number" name="otySalary" value={formData.otySalary || ''} onChange={handleInputChange} /></div>
-          <div style={styles.inputGroup}><label style={styles.label}>出社回数 </label><input style={styles.input} type="number" name="otyOnSiteNum" value={formData.otyOnSiteNum || ''} onChange={handleInputChange} /></div>
-          <div style={styles.inputGroup}><label style={styles.label}>勤務時間（h）</label><input style={styles.input} type="number" name="otyTime" value={formData.otyTime || ''} onChange={handleInputChange} /></div>
+          <div style={styles.inputGroup}><label style={styles.label}>給与</label><input style={styles.input} type="number" name="otySalary" value={formData.otySalary ?? ''} onChange={handleInputChange} /></div>
+          <div style={styles.inputGroup}><label style={styles.label}>出社回数 </label><input style={styles.input} type="number" name="otyOnSiteNum" value={formData.otyOnSiteNum ?? ''} onChange={handleInputChange} /></div>
+          <div style={styles.inputGroup}><label style={styles.label}>勤務時間（h）</label><input style={styles.input} type="number" name="otyTime" value={formData.otyTime ?? ''} onChange={handleInputChange} /></div>
         </div>
       </div>
       <button style={styles.button} onClick={onSave}>この月のデータを保存</button>

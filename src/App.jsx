@@ -100,18 +100,30 @@ function App() {
       const hours = Math.trunc(nkrTime);
       const minutes = Number(String(nkrTime).split(".")[1] || 0);
       const decimalHours = hours + minutes / 60;
-      const nkrTaxableSalary = decimalHours * NKR_HOURLY_WAGE;
+      const nkrFormatTime = Math.round(decimalHours * 100) / 100;
+      const nkrTaxableSalary = Math.round(decimalHours * NKR_HOURLY_WAGE);
       const nkrSalary = nkrTaxableSalary + NKR_COMMUTING_COST * nkrOnSiteNum;
 
       // 計算結果をローカル変数に格納
       nkrDataToSave = {
         salary: nkrSalary,
         taxable_salary: nkrTaxableSalary,
-        time: nkrTime,
+        time: nkrFormatTime,
       };
       // 更新後のformDataにも反映
       updatedFormData.nkrSalary = nkrSalary;
       updatedFormData.nkrTaxableSalary = nkrTaxableSalary;
+      updatedFormData.nkrTime = nkrFormatTime;
+    } else if (formData.nkrSalary == 0 && formData.nkrTime == 0) {
+      // どちらも0の場合の処理
+      nkrDataToSave = {
+        salary: 0,
+        taxable_salary: 0,
+        time: 0,
+      };
+      updatedFormData.nkrSalary = 0;
+      updatedFormData.nkrTaxableSalary = 0;
+      updatedFormData.nkrTime = 0;
     }
 
     // --- OTYの計算（NKRと同様に修正） ---
@@ -128,6 +140,16 @@ function App() {
       };
       updatedFormData.otyTime = otyTime;
       updatedFormData.otyTaxableSalary = otyTaxableSalary;
+    } else if (formData.otySalary == 0) {
+      // どちらも0の場合の処理
+      otyDataToSave = {
+        salary: 0,
+        taxable_salary: 0,
+        time: 0,
+      };
+      updatedFormData.otySalary = 0;
+      updatedFormData.otyTaxableSalary = 0;
+      updatedFormData.otyTime = 0;
     }
 
     // 画面の表示を更新
